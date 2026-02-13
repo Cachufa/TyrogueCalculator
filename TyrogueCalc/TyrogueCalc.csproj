@@ -7,5 +7,13 @@
         <UseWindowsForms>true</UseWindowsForms>
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
+    
+    <PropertyGroup>
+        <ApplicationIcon>Tyrogue_icon.ico</ApplicationIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="Tyrogue_icon.ico" />
+    </ItemGroup>
 
 </Project>
