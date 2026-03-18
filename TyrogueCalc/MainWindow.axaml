@@ -1,0 +1,122 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+        x:Class="TyrogueEvolutionCalculator.MainWindow"
+        Title="Tyrogue Evolution Calculator"
+        Background="#0F172A"
+        Width="800" Height="650"
+        WindowStartupLocation="CenterScreen">
+
+    <ScrollViewer>
+        <StackPanel Margin="20" Spacing="20">
+            <!-- Título -->
+            <TextBlock Text="Tyrogue Evolution Calculator" 
+                       FontSize="24" FontWeight="Bold" 
+                       Foreground="#38BDF8" 
+                       HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+            <Grid ColumnDefinitions="*,*">
+                <!-- Columna Izquierda: Datos del Tyrogue -->
+                <Border Grid.Column="0" BorderBrush="#38BDF8" BorderThickness="1" 
+                        CornerRadius="8" Padding="15" Margin="0,0,10,0">
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="📊 Datos del Tyrogue" Foreground="#38BDF8" FontWeight="Bold" Margin="0,0,0,10"/>
+                        
+                        <Grid ColumnDefinitions="120,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Nivel Actual:" Foreground="#CBD5E1" VerticalAlignment="Center"/>
+                            <NumericUpDown Name="numNivel" Grid.Row="0" Grid.Column="1" Value="20" Minimum="1" Maximum="100" Margin="0,2"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Naturaleza:" Foreground="#CBD5E1" VerticalAlignment="Center"/>
+                            <ComboBox Name="cmbNaturaleza" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,2"/>
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="PS:" Foreground="#CBD5E1" VerticalAlignment="Center"/>
+                            <NumericUpDown Name="numPS" Grid.Row="2" Grid.Column="1" Value="10" Minimum="0" Maximum="999" Margin="0,2"/>
+
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Ataque:" Foreground="#CBD5E1" VerticalAlignment="Center"/>
+                            <NumericUpDown Name="numAtaque" Grid.Row="3" Grid.Column="1" Value="10" Minimum="0" Maximum="999" Margin="0,2"/>
+
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Defensa:" Foreground="#CBD5E1" VerticalAlignment="Center"/>
+                            <NumericUpDown Name="numDefensa" Grid.Row="4" Grid.Column="1" Value="10" Minimum="0" Maximum="999" Margin="0,2"/>
+
+                            <TextBlock Grid.Row="5" Grid.Column="0" Text="At. Especial:" Foreground="#CBD5E1" VerticalAlignment="Center"/>
+                            <NumericUpDown Name="numAtEspecial" Grid.Row="5" Grid.Column="1" Value="10" Minimum="0" Maximum="999" Margin="0,2"/>
+
+                            <TextBlock Grid.Row="6" Grid.Column="0" Text="Def. Especial:" Foreground="#CBD5E1" VerticalAlignment="Center"/>
+                            <NumericUpDown Name="numDefEspecial" Grid.Row="6" Grid.Column="1" Value="10" Minimum="0" Maximum="999" Margin="0,2"/>
+
+                            <TextBlock Grid.Row="7" Grid.Column="0" Text="Velocidad:" Foreground="#CBD5E1" VerticalAlignment="Center"/>
+                            <NumericUpDown Name="numVelocidad" Grid.Row="7" Grid.Column="1" Value="10" Minimum="0" Maximum="999" Margin="0,2"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <!-- Columna Derecha: Selección de Evolución y Resultados -->
+                <StackPanel Grid.Column="1" Spacing="20">
+                    <Border BorderBrush="#38BDF8" BorderThickness="1" CornerRadius="8" Padding="15">
+                        <StackPanel Spacing="10">
+                            <TextBlock Text="🧬 Evolución Deseada" Foreground="#38BDF8" FontWeight="Bold" Margin="0,0,0,10"/>
+                            <Grid ColumnDefinitions="*,*,*">
+                                <Button Name="btnHitmonlee" Grid.Column="0" Content="Hitmonlee" HorizontalAlignment="Stretch" Margin="2"/>
+                                <Button Name="btnHitmonchan" Grid.Column="1" Content="Hitmonchan" HorizontalAlignment="Stretch" Margin="2"/>
+                                <Button Name="btnHitmontop" Grid.Column="2" Content="Hitmontop" HorizontalAlignment="Stretch" Margin="2"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <Button Name="btnCalcular" Content="CALCULAR VITAMINAS" 
+                            Background="#38BDF8" Foreground="White" FontWeight="Bold"
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Padding="15"/>
+
+                    <Border Name="borderResultados" IsVisible="False" 
+                            BorderBrush="#10B981" BorderThickness="2" CornerRadius="8" Padding="15" Background="#1E293B">
+                        <StackPanel Spacing="5">
+                            <TextBlock Text="📋 Resultados del Cálculo" Foreground="#10B981" FontWeight="Bold" FontSize="16" Margin="0,0,0,5"/>
+                            
+                            <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto,Auto">
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Atq. Actual" Foreground="#94A3B8" FontSize="12"/>
+                                <TextBlock Name="lblAtqActual" Grid.Row="1" Grid.Column="0" Text="0" Foreground="White" FontWeight="Bold" FontSize="18"/>
+                                
+                                <TextBlock Grid.Row="0" Grid.Column="1" Text="Atq. Final" Foreground="#94A3B8" FontSize="12"/>
+                                <TextBlock Name="lblAtqFinal" Grid.Row="1" Grid.Column="1" Text="0" Foreground="#38BDF8" FontWeight="Bold" FontSize="18"/>
+
+                                <TextBlock Grid.Row="0" Grid.Column="2" Text="IV Ataque" Foreground="#94A3B8" FontSize="12"/>
+                                <TextBlock Name="lblIVAtaque" Grid.Row="1" Grid.Column="2" Text="0" Foreground="#F59E0B" FontWeight="Bold" FontSize="18"/>
+
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Def. Actual" Foreground="#94A3B8" FontSize="12" Margin="0,10,0,0"/>
+                                <TextBlock Name="lblDefActual" Grid.Row="3" Grid.Column="0" Text="0" Foreground="White" FontWeight="Bold" FontSize="18"/>
+                                
+                                <TextBlock Grid.Row="2" Grid.Column="1" Text="Def. Final" Foreground="#94A3B8" FontSize="12" Margin="0,10,0,0"/>
+                                <TextBlock Name="lblDefFinal" Grid.Row="3" Grid.Column="1" Text="0" Foreground="#38BDF8" FontWeight="Bold" FontSize="18"/>
+
+                                <TextBlock Grid.Row="2" Grid.Column="2" Text="IV Defensa" Foreground="#94A3B8" FontSize="12" Margin="0,10,0,0"/>
+                                <TextBlock Name="lblIVDefensa" Grid.Row="3" Grid.Column="2" Text="0" Foreground="#F59E0B" FontWeight="Bold" FontSize="18"/>
+                            </Grid>
+
+                            <Separator Background="#334155" Margin="0,10"/>
+
+                            <StackPanel Spacing="5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Proteínas (Ataque): " Foreground="#CBD5E1"/>
+                                    <TextBlock Name="lblProteinas" Text="0" Foreground="#38BDF8" FontWeight="Bold"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Hierros (Defensa): " Foreground="#CBD5E1"/>
+                                    <TextBlock Name="lblHierros" Text="0" Foreground="#38BDF8" FontWeight="Bold"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                    <TextBlock Text="Costo Estimado: " Foreground="#CBD5E1" FontSize="16"/>
+                                    <TextBlock Name="lblCosto" Text="0₽" Foreground="#10B981" FontWeight="Bold" FontSize="16"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <TextBlock Name="lblAdvertencia" Foreground="#F43F5E" FontWeight="Bold" 
+                                       TextWrapping="Wrap" Margin="0,10,0,0" IsVisible="False"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</Window>
