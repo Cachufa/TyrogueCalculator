@@ -5,6 +5,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
         x:Class="TyrogueEvolutionCalculator.MainWindow"
         Title="Tyrogue Evolution Calculator"
+        Icon="Assets/Tyrogue_icon.ico"
         Background="#0F172A"
         Width="800" Height="650"
         WindowStartupLocation="CenterScreen">
