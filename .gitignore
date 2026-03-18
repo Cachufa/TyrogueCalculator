@@ -1,3 +1,6 @@
+## macOS
+.DS_Store
+
 ## Archivos de usuario de Visual Studio
 *.rsuser
 *.suo
